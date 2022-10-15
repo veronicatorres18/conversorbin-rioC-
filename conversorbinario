@@ -1,0 +1,52 @@
+using Microsoft.VisualBasic;
+using System;
+namespace CShp_ConversaoBinariaDecimal
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string opcao;
+            do
+            {
+                Console.WriteLine("Escolha a sua opção :");
+                Console.WriteLine("\tb - Converter Binário para Decimal");
+                Console.WriteLine("\td - Converter Decimal para Binário");
+                Console.WriteLine("\tq - Encerra o programa");
+                Console.Write("Sua opção ? ");
+                opcao = Console.ReadLine();
+                switch (opcao)
+                {
+                    case "b":
+                        ConverteBinarioParaDecimal();
+                        break;
+                    case "d":
+                        ConverteDecimalParaBinario();
+                        break;
+                    case "q":
+                        Console.WriteLine("Vaza do meu programa");
+                        break;
+                }
+                Console.ReadKey();
+            } while (opcao != "Q" && opcao != "q");
+        }
+        private static void ConverteDecimalParaBinario()
+        {
+            Console.WriteLine("Informe o numero decimal a converter");
+            string valor = Console.ReadLine();
+            int valorconvertido = 0;
+            int.TryParse(valor, out valorconvertido);
+            string resultado = Convert.ToString(valorconvertido,2);
+            Console.WriteLine($" O numero {valor} é igual a {resultado} ");
+            Console.WriteLine();
+        }
+        private static void ConverteBinarioParaDecimal()
+        {
+            Console.WriteLine("Informe o numero binário.");
+            string valor = Console.ReadLine();
+            string resultado = Convert.ToInt32(valor,2).ToString();
+            Console.WriteLine($" O numero {valor} é igual a {resultado} ");
+            Console.WriteLine();
+        }
+    }
+}
